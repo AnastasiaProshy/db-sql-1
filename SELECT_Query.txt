@@ -1,0 +1,84 @@
+1. Select all students born in 1990:
+
+    select *
+    from students 
+    where year(date_of_birth) = 1990;
+
+
+
+
+2. Select all courses that are worth more than 10 credits:
+
+    select *
+    from courses
+    where cfu > 10;
+
+
+
+
+3. Select all students who are over 30 years old:
+
+    select *
+    from students
+    where timestampdiff(year, students.date_of_birth, curdate()) > 30;
+
+    OR
+
+    select id, name, surname, date_of_birth, registration_number,
+    timestampdiff(year, students.date_of_birth, curdate())
+    from students
+    where timestampdiff(year, students.date_of_birth, curdate()) > 30
+    order by timestampdiff(year, students.date_of_birth, curdate()) desc;
+
+
+
+
+4. Select all courses from the first semester of the first year of any degree program:
+
+    select *
+    from courses 
+    where courses.period = 'I semestre'
+    and courses.`year` = 1;
+
+    OR
+
+    select *
+    from courses 
+    where courses.period like 'I %'
+    and courses.`year` = 1;
+
+
+
+
+5. Select all the exam sessions that occur in the afternoon (after 2 PM) on June 20, 2020:
+
+    select *
+    from exams
+    where hour >= '14:00:00'
+    and date = '2020-06-20';
+
+
+
+
+6. Select all Master's degree programs:
+
+    select *
+    from degrees
+    where `level` = 'magistrale';
+
+
+
+
+7. How many departments does the university have:
+
+    select count(id) as numero_dipartimenti
+    from departments;
+
+
+
+
+8. How many teachers do not have a phone number:
+
+    select count(id)
+    from teachers 
+    where phone is null;
