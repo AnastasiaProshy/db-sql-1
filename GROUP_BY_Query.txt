@@ -1,0 +1,37 @@
+1. Count how many subscribers there were each year:
+
+    select  year(students.enrolment_date) as iscritti_per_anno, count(id) 
+    from students
+    group by iscritti_per_anno;
+
+
+
+
+
+2. Count the teachers who have their office in the same building:
+
+    select office_address, count(id)
+    from teachers 
+    group by office_address;
+
+
+
+
+
+3. Calculate the average grades for each exam session:
+
+    select exam_student.exam_id as appello_esame, avg (exam_student.vote)
+    from exam_student
+    group by appello_esame;
+
+
+
+
+
+
+4. Count how many degree programs there are for each department:
+    
+    select degrees.department_id , count(degrees.id)
+    from degrees
+    group by degrees.department_id; 
+    
